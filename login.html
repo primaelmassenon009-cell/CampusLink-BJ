@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusLink BJ - Connexion</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f6fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            width: 85%;
+            max-width: 350px;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .container h2 {
+            margin-bottom: 20px;
+            color: #0052cc;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #0052cc;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #003f99;
+        }
+
+        a {
+            display: block;
+            margin-top: 15px;
+            color: #0052cc;
+            text-decoration: none;
+            font-size: 14px;
+        }
+    </style>
+
+    <script>
+        function loginUser(event) {
+            event.preventDefault();
+
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+
+            if (email === "" || password === "") {
+                alert("Veuillez remplir tous les champs.");
+                return;
+            }
+
+            // 🔵 Simulation login (pas encore base de données)
+            alert("Connexion réussie !");
+            window.location.href = "home.html";
+        }
+    </script>
+
+</head>
+<body>
+
+    <div class="container">
+        <h2>Connexion</h2>
+
+        <form onsubmit="loginUser(event)">
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Mot de passe" required>
+
+            <button type="submit">Se connecter</button>
+        </form>
+
+        <a href="signup.html">Créer un compte</a>
+    </div>
+
+</body>
+</html>

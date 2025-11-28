@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusLink BJ</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial;
+            background: #f2f2f2;
+        }
+
+        header {
+            background: #0047AB;
+            padding: 20px;
+            text-align: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav {
+            background: #003780;
+            padding: 10px;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .section {
+            padding: 15px;
+        }
+
+        .card {
+            background: white;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 8px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            margin: 0;
+            color: #0047AB;
+        }
+
+        p {
+            margin-top: 5px;
+            color: #333;
+        }
+
+        /* FORMULAIRE D’INSCRIPTION */
+        .form-container {
+            background: white;
+            margin: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 8px rgba(0,0,0,0.1);
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background: #0047AB;
+            color: white;
+            border: none;
+            font-size: 16px;
+            border-radius: 8px;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #003a8c;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>CampusLink BJ</header>
+
+<nav>
+    <a href="#accueil">Accueil</a>
+    <a href="#inscription">Inscription</a>
+</nav>
+
+<!-- SECTION ACCUEIL -->
+<div id="accueil" class="section">
+
+    <div class="card">
+        <h2>Opportunités d’emploi</h2>
+        <p>Accès aux offres d'emploi, stages et bourses au Bénin.</p>
+    </div>
+
+    <div class="card">
+        <h2>Actualités universitaires</h2>
+        <p>Infos venant des universités et écoles du Bénin.</p>
+    </div>
+
+    <div class="card">
+        <h2>Formations & Compétences</h2>
+        <p>Découvre les formations en ligne et présentiels utiles.</p>
+    </div>
+
+    <div class="card">
+        <h2>Opportunités internationales</h2>
+        <p>Bourses d'études, programmes internationaux disponibles.</p>
+    </div>
+
+</div>
+
+<!-- SECTION INSCRIPTION -->
+<div id="inscription" class="form-container">
+    <h2>Créer un compte</h2>
+
+    <input type="text" placeholder="Nom complet">
+    <input type="email" placeholder="Adresse email">
+    <input type="password" placeholder="Mot de passe">
+
+    <button>S'inscrire</button>
+</div>
+
+</body>
+</html>

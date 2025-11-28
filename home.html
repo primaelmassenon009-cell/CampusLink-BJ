@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil - CampusLink BJ</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f7;
+            margin: 0;
+            padding-bottom: 70px; /* espace pour le menu */
+        }
+
+        header {
+            background: #0057ff;
+            color: white;
+            padding: 15px;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .container {
+            padding: 15px;
+        }
+
+        /* Bouton publier */
+        .post-btn {
+            display: block;
+            background: #0057ff;
+            color: white;
+            padding: 14px;
+            text-align: center;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .post-btn:hover {
+            background: #0044d6;
+        }
+
+        /* Carte publication */
+        .post {
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+        }
+
+        .post-user {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .post-time {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .post-content {
+            font-size: 15px;
+            color: #444;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<header>CampusLink BJ</header>
+
+<div class="container">
+
+    <!-- Bouton créer une annonce -->
+    <a href="annonce.html" class="post-btn">+ Publier une annonce</a>
+
+    <!-- Publications -->
+    <div class="post">
+        <div class="post-user">Université d'Abomey-Calavi</div>
+        <div class="post-time">Il y a 2 heures</div>
+        <div class="post-content">
+            Nouvelle opportunité de stage en informatique. Dépôt des dossiers jusqu'au 14 décembre.
+        </div>
+    </div>
+
+    <div class="post">
+        <div class="post-user">INMASI</div>
+        <div class="post-time">Il y a 5 heures</div>
+        <div class="post-content">
+            Séminaire gratuit sur l’entrepreneuriat étudiant ce samedi. Venez nombreux !
+        </div>
+    </div>
+
+</div>
+
+<!-- IMPORT MENU -->
+<div w3-include-html="menu.html"></div>
+
+<script>
+    function includeHTML() {
+        var elements = document.querySelectorAll("[w3-include-html]");
+        elements.forEach(elmnt => {
+            let file = elmnt.getAttribute("w3-include-html");
+            fetch(file)
+                .then(resp => resp.text())
+                .then(data => elmnt.innerHTML = data);
+        });
+    }
+    includeHTML();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messagerie - CampusLink BJ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f2f2f2;
+        }
+
+        header {
+            background: #0057ff;
+            color: white;
+            padding: 15px;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        .messages-list {
+            padding: 20px;
+        }
+
+        .chat-item {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .chat-item img {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .chat-info .name {
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .chat-info .last-message {
+            font-size: 13px;
+            color: #555;
+        }
+
+        .navbar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            border-top: 1px solid #ccc;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #444;
+            font-size: 14px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>Messagerie</header>
+
+<div class="messages-list">
+
+    <div class="chat-item" onclick="openChat()">
+        <img src="https://i.imgur.com/0y8Ftya.png">
+        <div class="chat-info">
+            <div class="name">CampusLink Support</div>
+            <div class="last-message">Bienvenue 👋 Besoin d’aide ?</div>
+        </div>
+    </div>
+
+    <div class="chat-item" onclick="openChat()">
+        <img src="https://i.imgur.com/gJtCz1i.png">
+        <div class="chat-info">
+            <div class="name">Utilisateur Exemple</div>
+            <div class="last-message">Salut 👀</div>
+        </div>
+    </div>
+
+</div>
+
+<div class="navbar">
+    <a href="home.html">Accueil</a>
+    <a href="annonce.html">Annonces</a>
+    <a href="messagerie.html"><b>Messages</b></a>
+    <a href="profil.html">Profil</a>
+</div>
+
+<script>
+function openChat() {
+    window.location.href = "conversation.html";
+}
+</script>
+
+</body>
+</html>

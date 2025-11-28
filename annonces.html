@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Annonces</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f3f3f3;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0px 2px 5px rgba(0,0,0,0.15);
+        }
+
+        .image {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .like-btn {
+            padding: 8px 15px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .like-btn.liked {
+            background: red;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            margin-top: 10px;
+        }
+
+        .comment {
+            background: #f0f0f0;
+            padding: 8px;
+            border-radius: 6px;
+            margin-top: 5px;
+        }
+
+        #new-annonce {
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0px 2px 5px rgba(0,0,0,0.15);
+        }
+
+        input, button {
+            padding: 10px;
+            width: 100%;
+            border-radius: 8px;
+            margin-top: 8px;
+            border: 1px solid #aaa;
+        }
+
+        button {
+            background: #28a745;
+            color: white;
+            border: none;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+    </style>
+
+</head>
+<body>
+
+    <h2>📢 Annonces</h2>
+
+    <!-- Formulaire de création -->
+    <div id="new-annonce">
+        <h3>Créer une annonce</h3>
+
+        <input type="text" id="title" placeholder="Titre de l'annonce">
+        <textarea id="content" placeholder="Décris ton annonce"></textarea>
+
+        <label>Image :</label>
+        <input type="file" id="image-input" accept="image/*">
+
+        <button onclick="createAnnonce()">Publier</button>
+    </div>
+
+    <!-- Zone où les annonces s'affichent -->
+    <div id="annonces"></div>
+
+    <script>
+        let annonces = [];
+
+        function createAnnonce() {
+            let title = document.getElementById("title").value;
+            let content = document.getElementById("content").value;
+            let imageFile = document.getElementById("image-input").files[0];
+
+            if (!title || !content) {
+                alert("Titre et contenu requis !");
+                return;
+            }
+
+            let reader = new FileReader();
+            reader.onload = function(e) {
+                let imageURL = e.target.result;
+
+                let annonce = {
+                    id: Date.now(),
+                    title: title,
+                    content: content,
+                    image: imageFile ? imageURL : null,
+                    likes: 0,
+                    liked: false,
+                    comments: []
+                };
+
+                annonces.push(annonce);
+                displayAnnonces();
+            };
+
+            if (imageFile) {
+                reader.readAsDataURL(imageFile);
+            } else {
+                reader.onload();
+            }
+        }
+
+        function displayAnnonces() {
+            let container = document.getElementById("annonces");
+            container.innerHTML = "";
+
+            annonces.forEach(a => {
+                let card = document.createElement("div");
+                card.className = "card";
+
+                card.innerHTML = `
+                    <h3>${a.title}</h3>
+                    ${a.image ? `<img src="${a.image}" class="image">` : ""}
+                    <p>${a.content}</p>
+
+                    <button class="like-btn ${a.liked ? "liked" : ""}" onclick="like(${a.id})">
+                        ❤️ ${a.likes}
+                    </button>
+
+                    <h4>Commentaires</h4>
+                    <div id="comments-${a.id}">
+                        ${a.comments.map(c => `<div class="comment">${c}</div>`).join("")}
+                    </div>
+
+                    <textarea id="comment-input-${a.id}" placeholder="Ajouter un commentaire..."></textarea>
+                    <button onclick="addComment(${a.id})">Commenter</button>
+                `;
+
+                container.appendChild(card);
+            });
+        }
+
+        function like(id) {
+            let a = annonces.find(x => x.id === id);
+
+            if (!a.liked) {
+                a.likes++;
+                a.liked = true;
+            } else {
+                a.likes--;
+                a.liked = false;
+            }
+
+            displayAnnonces();
+        }
+
+        function addComment(id) {
+            let input = document.getElementById("comment-input-" + id);
+            let text = input.value;
+
+            if (!text.trim()) return;
+
+            let annonce = annonces.find(x => x.id === id);
+            annonce.comments.push(text);
+
+            input.value = "";
+            displayAnnonces();
+        }
+    </script>
+
+</body>
+</html>
